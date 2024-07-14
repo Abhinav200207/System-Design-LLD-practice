@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    Game *game = new Game({"Abhinav", "Kumar", "Maurya"},3);
+    Game *game = new Game({"Abhinav", "Kumar", "Maurya", "Bobby", "Golu"},5);
     game->startGame();
     // Dice *dice = new Dice();
     // vector<int> v(7,0);
