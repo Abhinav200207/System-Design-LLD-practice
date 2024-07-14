@@ -20,8 +20,8 @@ public:
     void initilizeGamePlayersandBoard()
     {
         board = new Board(8);
-        Player *p1 = new Player("Abhinav", "BLACK");
-        Player *p2 = new Player("Maurya", "WHITE");
+        Player *p1 = new Player("Abhinav", Color::BLACK);
+        Player *p2 = new Player("Maurya", Color::WHITE);
         players.push_back(p1);
         players.push_back(p2);
     }
@@ -51,7 +51,7 @@ public:
 
             if (idx == 0)
             {
-                if (curr->getPieces()->getColor() == "BLACK")
+                if (curr->getPieces()->getColor() == Color::BLACK)
                 {
                     if (nxt->getIsEmpty() == true)
                     {
@@ -70,7 +70,7 @@ public:
                     }
                     else
                     {
-                        if (nxt->getPieces()->getColor() == "BLACK")
+                        if (nxt->getPieces()->getColor() == Color::BLACK)
                         {
                             cout << "You cannot kill yourself\n";
                         }
@@ -100,7 +100,7 @@ public:
             }
             if (idx == 1)
             {
-                if (curr->getPieces()->getColor() == "WHITE")
+                if (curr->getPieces()->getColor() == Color::WHITE)
                 {
                     if (nxt->getIsEmpty() == true)
                     {
@@ -119,7 +119,7 @@ public:
                     }
                     else
                     {
-                        if (nxt->getPieces()->getColor() == "WHITE")
+                        if (nxt->getPieces()->getColor() == Color::WHITE)
                         {
                             cout << "You cannot kill yourself\n";
                         }

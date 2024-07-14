@@ -6,11 +6,11 @@ using namespace std;
 
 class Cell{
     Piece *piece;
-    string color;
+    Color color;
     pair<int,int> pos;
     int isEmpty;
 public:
-    Cell(string color,pair<int,int> pos,int isEmpty){
+    Cell(Color color,pair<int,int> pos,int isEmpty){
         this->color = color;
         this->isEmpty = isEmpty;
         this->pos = pos;

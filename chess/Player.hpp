@@ -1,18 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include "Color.hpp"
+
 class Player
 {
     string name;
-    string color;
+    Color color;
 
 public:
-    Player(string name, string color)
+    Player(string name, Color color)
     {
         this->color = color;
         this->name = name;
     }
 
     string getName() {return name;}
-    string getColor() {return color;}
+    Color getColor() {return color;}
 };
