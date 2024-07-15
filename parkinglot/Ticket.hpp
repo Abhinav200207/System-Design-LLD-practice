@@ -17,26 +17,30 @@ class Ticket
 public:
     static Ticket *createTicket(Vehicle *vehicle, ParkingSlot *parkingSlot, int inTime)
     {
-        Ticket *ticket;
+        Ticket *ticket = new Ticket(); // Correctly create a new Ticket object
         ticket->parkingSlot = parkingSlot;
         ticket->startTime = inTime;
         ticket->vehicle = vehicle;
         ticket->ticketNumber = vehicle->getVehicleNumber() + to_string(inTime);
         return ticket;
     }
-    string getTicketNumber()
+
+    string getTicketNumber() const
     {
         return ticketNumber;
     }
-    int getStartTime()
+
+    int getStartTime() const
     {
         return startTime;
     }
-    ParkingSlot *getParkingSlot()
+
+    ParkingSlot *getParkingSlot() const
     {
         return parkingSlot;
     }
-    Vehicle *getVehicle()
+
+    Vehicle *getVehicle() const
     {
         return vehicle;
     }

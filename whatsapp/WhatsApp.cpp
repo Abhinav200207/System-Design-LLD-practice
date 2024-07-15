@@ -6,6 +6,9 @@ using namespace std;
 #include "Message.hpp"
 #include "MessageStatus.hpp"
 
+// g++ -o my_program User.cpp Group.cpp Message.cpp MessageStatus.cpp WhatsApp.cpp
+// ./my_program
+
 int main()
 {
     // Create users
@@ -35,9 +38,9 @@ int main()
     cout << "Message Status: " << MessageStatus::getMessageStatus(messageId) << endl;
 
     // Send a group message from user1
-    user1->sendGroupMessage(group, "Hello everyone!");
+    user2->sendGroupMessage(group, "Hello everyone!");
 
-    user2->readMessage();
+    user3->readMessage();
 
     // Update and check last online status
     user1->updateLastOnline("12:11 AM");

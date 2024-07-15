@@ -88,6 +88,10 @@ public:
     {
         return borrowedByPersonId;
     }
+    Book *getBook()
+    {
+        return book;
+    }
 };
 
 class Library
@@ -147,6 +151,23 @@ public:
 
         borrowedBook.push_back(new BorrowedBook(dateBorrowed, personId, time, b));
         personBorrowed.push_back(personId);
+    }
+
+    int returnBookAndPay(string personId, string bookId, int dateReturn)
+    {
+        Person *p = person[personId];
+        Book *b = books[bookId];
+        BorrowedBook *bb;
+        for (auto x : borrowedBook)
+        {
+            if (x->getBook()->getBookId() == b->getBookId())
+            {
+                bb = x;
+                break;
+            }
+        }
+        
+                
     }
 
     void notifyPerson(int currTime)
