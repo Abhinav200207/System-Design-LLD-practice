@@ -5,9 +5,11 @@
 using namespace std;
 
 #include "User.hpp"
+#include "GroupService.hpp"
 #include "Message.hpp"
 
 class User;
+class GroupService;
 
 class Group
 {
@@ -26,7 +28,7 @@ public:
     void removeMember(User *user);
     vector<User *> getMembers() const;
 
-    void broadcastMessage(Message *message);
+    void notifyAll(Message *message);
 
     friend ostream &operator<<(ostream &os, const Group &group);
 };

@@ -16,6 +16,12 @@ int main()
     User *user2 = new User("2", "Bob");
     User *user3 = new User("3", "Charlie");
 
+    MessageService *messageService = MessageService::getInstance();
+
+    messageService->addUser(user1);
+    messageService->addUser(user2);
+    messageService->addUser(user3);
+
     // Add contacts
     user1->addContact(user2);
     user2->addContact(user1);
@@ -27,18 +33,26 @@ int main()
     group->addMember(user2);
     group->addMember(user3);
 
+    GroupService *groupService = GroupService::getInstance();
+    groupService->addGroup(group);
+
     // Send a message from user1 to user2
-    string messageId = user1->sendMessage(user2, "Hello Bob!");
+    string messageId = user1->sendMessage(user2->getUserId(), "Hello Bob!");
 
     // Check message status
-    cout << "Message Status: " << MessageStatus::getMessageStatus(messageId) << endl;
+    cout << "Message Status: 2 " << MessageStatus::getMessageStatus(messageId) << endl;
 
     user2->readMessage();
 
-    cout << "Message Status: " << MessageStatus::getMessageStatus(messageId) << endl;
+    cout << "Message Status: 3 " << MessageStatus::getMessageStatus(messageId) << endl;
 
+    cout << endl;
+    cout << endl;
+
+    cout << "Group messaging example" << endl;
+    
     // Send a group message from user1
-    user2->sendGroupMessage(group, "Hello everyone!");
+    user2->sendGroupMessage(group->getGroupId(), "Hello everyone!");
 
     user3->readMessage();
 

@@ -3,7 +3,6 @@ using namespace std;
 
 #include "Group.hpp"
 
-
 Group::Group(const string &groupId, const string &groupName)
     : groupId(groupId), groupName(groupName) {}
 
@@ -32,14 +31,12 @@ vector<User *> Group::getMembers() const
     return members;
 }
 
-void Group::broadcastMessage(Message *message)
+void Group::notifyAll(Message *message)
 {
-    for (User *member : members)
+    for (auto x : members)
     {
-        if (member->getUserId() != message->getSenderId())
-        {
-            member->receiveMessage(message);
-        }
+        if (x->getUserId() != message->getSenderId())
+            x->notifyMessage(message);
     }
 }
 

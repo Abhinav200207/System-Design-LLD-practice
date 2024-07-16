@@ -36,25 +36,27 @@ void User::addGroup(Group *group)
     groups.push_back(group);
 }
 
-string User::sendMessage(User *receiver, const string &content)
+string User::sendMessage(string receiverid, const string &content)
 {
-    Message *message = new Message(userId, receiver->getUserId(), content);
+    Message *message = new Message(username, userId, receiverid, content);
+    MessageService *messageService = MessageService::getInstance();
     MessageStatus::updateMessageStatus(message->getMessageId(), MessageStatus::SENT);
-    cout << "Message Status: " << MessageStatus::getMessageStatus(message->getMessageId()) << "\n";
-    receiver->receiveMessage(message);
+    cout << "Message Status: 1 " << MessageStatus::getMessageStatus(message->getMessageId()) << "\n";
+    messageService->sendMessage(message, userId, receiverid);
     return message->getMessageId();
 }
 
-void User::sendGroupMessage(Group *group, const string &content)
+void User::sendGroupMessage(string groupId, const string &content)
 {
-    Message *message = new Message(userId, group->getGroupId(), content, true);
-    group->broadcastMessage(message);
+    Message *message = new Message(username, userId, groupId, content, true);
+    GroupService *groupService = GroupService::getInstance();
+    groupService->broadcastMessage(groupId, message);
 }
 
-void User::receiveMessage(Message *message)
+void User::notifyMessage(Message *message)
 {
     cout << "Message notification for " << username << endl;
-    cout << "Message received from " << message->getSenderId() << endl;
+    cout << "Message received from " << message->getSenderName() << endl;
     MessageStatus::updateMessageStatus(message->getMessageId(), MessageStatus::RECEIVED);
     messagesV.push_back(message);
 }

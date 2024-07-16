@@ -3,14 +3,14 @@ using namespace std;
 
 #include "Message.hpp"
 
-Message::Message(const string &senderId, const string &receiverId, const string &content)
-    : senderId(senderId), receiverId(receiverId), content(content), isGroupMessage(false), timestamp("")
+Message::Message(const string &senderName, const string &senderId, const string &receiverId, const string &content)
+    : senderId(senderId), receiverId(receiverId), content(content), isGroupMessage(false), timestamp(""), senderName(senderName)
 {
     messageId = generateUUID();
 }
 
-Message::Message(const string &senderId, const string &groupId, const string &content, bool isGroupMessage)
-    : senderId(senderId), receiverId(groupId), content(content), isGroupMessage(isGroupMessage), timestamp("")
+Message::Message(const string &senderName, const string &senderId, const string &groupId, const string &content, bool isGroupMessage)
+    : senderId(senderId), receiverId(groupId), content(content), isGroupMessage(isGroupMessage), timestamp(""), senderName(senderName)
 {
     messageId = generateUUID();
 }
@@ -35,6 +35,11 @@ string Message::getMessageId() const
 string Message::getSenderId() const
 {
     return senderId;
+}
+
+string Message::getSenderName() const
+{
+    return senderName;
 }
 
 string Message::getReceiverId() const

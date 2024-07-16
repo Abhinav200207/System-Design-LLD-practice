@@ -7,6 +7,7 @@ using namespace std;
 #include "Group.hpp"
 #include "Message.hpp"
 #include "MessageStatus.hpp"
+#include "MessageService.hpp"
 
 class Group;
 
@@ -31,9 +32,9 @@ public:
     void addContact(User *user);
     void addGroup(Group *group);
 
-    string sendMessage(User *receiver, const string &content);
-    void sendGroupMessage(Group *group, const string &content);
-    void receiveMessage(Message *message);
+    string sendMessage(string receiverid, const string &content);
+    void sendGroupMessage(string groupId, const string &content);
+    void notifyMessage(Message *message);
     void readMessage();
 
     friend ostream &operator<<(ostream &os, const User &user);
